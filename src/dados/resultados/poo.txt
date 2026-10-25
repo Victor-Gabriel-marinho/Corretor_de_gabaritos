@@ -1,0 +1,3 @@
+ANA	9
+JOAO	7
+MARIA	4

@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        while (1 != 0) {
+        while (true) {
             System.out.println("=== CORRETOR DE GABARITOS ===");
             System.out.println("Selecione uma opção:");
             System.out.println("1 - Cadastrar notas");
@@ -45,6 +45,10 @@ public class Main {
                         gerenciador.criargabaritos(nomeDisciplina);
                         break;
                     }
+                    break;
+                }
+                case 3: {
+                    gerenciador.gerarBoletins();
                     break;
                 }
                 case (0): {

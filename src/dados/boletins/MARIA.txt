@@ -1,0 +1,8 @@
+BOLETIM ESCOLAR
+Aluno: MARIA
+
+Calculo: 10.0
+poo: 4.0
+
+Média: 7,00
+Resultado: APROVADO
