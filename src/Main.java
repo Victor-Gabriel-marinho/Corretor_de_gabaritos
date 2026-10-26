@@ -1,4 +1,5 @@
 import service.GerenciadorDeArquivos;
+import service.GeradorResultado;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ public class Main {
 
     private static final Scanner scan = new Scanner(System.in);
     private static final GerenciadorDeArquivos gerenciador = new GerenciadorDeArquivos();
+    private static final GeradorResultado geradorResultado = new GeradorResultado(scan);
 
     public static void main(String[] args) {
 
@@ -47,6 +49,9 @@ public class Main {
                     }
                     break;
                 }
+                case 2: {
+                    geradorResultado.gerar();
+                    break; }
                 case 3: {
                     gerenciador.gerarBoletins();
                     break;
