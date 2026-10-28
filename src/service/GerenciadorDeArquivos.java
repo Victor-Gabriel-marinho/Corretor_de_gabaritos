@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.InputMismatchException;
 
 public class GerenciadorDeArquivos {
 
@@ -49,21 +50,31 @@ public class GerenciadorDeArquivos {
 
             for (Aluno aluno : turma) {
 
-                System.out.println(
-                        "Digite as respostas do aluno "
-                                + aluno.getNome()
-                                + " (ex.: VFVFFVVFVF)"
-                );
+                String gabarito;
 
-                String gabarito = scan.nextLine().trim();
+                do {
+                    System.out.println(
+                            "Digite as respostas do aluno "
+                                    + aluno.getNome()
+                                    + " (ex.: VFVFFVVFVF)"
+                    );
+
+                    gabarito = scan.nextLine().trim().toUpperCase();
+
+                    if (gabarito.length() != 10) {
+                        System.out.println(
+                                "Erro: digite exatamente 10 caracteres (você digitou "
+                                        + gabarito.length() + ")."
+                        );
+                    } else if (!gabarito.matches("[VF]{10}")) {
+                        System.out.println("Erro: use apenas as letras V e F.");
+                    }
+
+                } while (!gabarito.matches("[VF]{10}"));
 
                 disciplina.adicionarRespostas(aluno, gabarito);
 
-                bw.write(
-                        gabarito.toUpperCase()
-                                + "\t"
-                                + aluno.getNome().trim().toUpperCase()
-                );
+                bw.write(gabarito + "\t" + aluno.getNome().trim().toUpperCase());
                 bw.newLine();
             }
 
@@ -77,9 +88,25 @@ public class GerenciadorDeArquivos {
     }
 
 
-    public void criarturma(int quantidadeDeAlunos) {
+    public void criarturma() {
+        int qtdAlunos = 0;
+        while (qtdAlunos < 0 || qtdAlunos == 0) {
+            try {
+                System.out.println("Digite o número de alunos");
+                qtdAlunos = scan.nextInt();
 
-        for (int i = 0; i < quantidadeDeAlunos; i++) {
+                if (qtdAlunos<= 0){
+                    System.out.println("Digite uma quantidade váilida");
+                }
+
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um número válido!");
+                scan.nextLine();
+            }
+
+        }
+        for (int i = 0; i < qtdAlunos; i++) {
 
             System.out.println(
                     "Digite o nome do aluno " + (i + 1)

@@ -2,7 +2,6 @@ BOLETIM ESCOLAR
 Aluno: ANA
 
 Calculo: 8.0
-poo: 9.0
 
-Média: 8,50
+Média: 8.00
 Resultado: APROVADO

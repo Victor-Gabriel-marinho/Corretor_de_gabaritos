@@ -2,7 +2,6 @@ BOLETIM ESCOLAR
 Aluno: JOAO
 
 Calculo: 6.0
-poo: 7.0
 
-Média: 6,50
+Média: 6.00
 Resultado: REPROVADO

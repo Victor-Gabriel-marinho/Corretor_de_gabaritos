@@ -1,7 +1,6 @@
 import service.GerenciadorDeArquivos;
 import service.GeradorResultado;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -28,30 +27,19 @@ public class Main {
                     System.out.println("Digite o nome da disciplina");
                     String nomeDisciplina = scan.nextLine();
 
-                    int qtdAlunos = 0;
-                    while (qtdAlunos < 0 || qtdAlunos == 0) {
-                        try {
-                            System.out.println("Digite o número de alunos");
-                            qtdAlunos = scan.nextInt();
 
-                            scan.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.println("Digite um número válido!");
-                            scan.nextLine();
-                        }
-
-                        if (gerenciador.getTurma().isEmpty()) {
-                            gerenciador.criarturma(qtdAlunos);
-                        }
-
-                        gerenciador.criargabaritos(nomeDisciplina);
-                        break;
+                    if (gerenciador.getTurma().isEmpty()) {
+                        gerenciador.criarturma();
                     }
+
+                    gerenciador.criargabaritos(nomeDisciplina);
                     break;
+
                 }
                 case 2: {
                     geradorResultado.gerar();
-                    break; }
+                    break;
+                }
                 case 3: {
                     gerenciador.gerarBoletins();
                     break;
@@ -63,7 +51,7 @@ public class Main {
             }
 
 
-            }
         }
-
     }
+
+}
